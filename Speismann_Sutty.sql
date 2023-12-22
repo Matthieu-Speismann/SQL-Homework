@@ -19,6 +19,11 @@ WHERE Ville <> "Nancy" AND Nom LIKE "%v%";
 
 -- Question 3:
 
+SELECT COUNT(*) AS 'Nombre de themes'
+FROM(
+    SELECT DISTINCT Theme
+    FROM Question
+);
 
 -- Question 4:
 

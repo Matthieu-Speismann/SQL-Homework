@@ -11,7 +11,11 @@ WHERE Niveau = 2 AND Theme = "les croisements";
 
 -- Question 2:
 
+SELECT Nom, Prenom
+FROM Eleve
+WHERE Ville <> "Nancy" AND Nom LIKE "%v%"; 
 
+-- Remarque: On a pas besoin de différencier 'v' de 'V'.
 
 -- Question 3:
 

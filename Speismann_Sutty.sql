@@ -43,6 +43,15 @@ ORDER BY "Nombre d'apparition" DESC, IdQuestion ASC;
 
 -- Question 6:
 
+SELECT IdSerie
+FROM( -- Sous requête attribuant à chaque série le nombre de question sur les panneaux
+    SELECT app.IdSerie, COUNT(q.IdQuestion) AS "Nombre de question sur les panneaux"
+    FROM Appartenance AS app
+    JOIN Question AS q
+        ON q.IdQuestion = app.IdQuestion
+    WHERE q.Theme = "les panneaux"
+    GROUP BY app.IdSerie)
+WHERE "Nombre de question sur les panneaux" >= 3;
 
 -- Question 7:
 

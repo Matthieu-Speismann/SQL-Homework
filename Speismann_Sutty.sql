@@ -34,6 +34,12 @@ ORDER BY "Nombre d'élèves" DESC;
 
 -- Question 5:
 
+SELECT IdQuestion, COUNT(IdSerie) AS "Nombre d'apparition", 
+    GROUP_CONCAT(IdSerie||": "|| NumeroQuestion) AS "Détails"
+FROM Appartenance
+GROUP BY IdQuestion
+    HAVING "Nombre d'apparition" >=2
+ORDER BY "Nombre d'apparition" DESC, IdQuestion ASC;
 
 -- Question 6:
 

@@ -27,6 +27,10 @@ FROM(
 
 -- Question 4:
 
+SELECT Ville, COUNT(IdEleve) AS "Nombre d'élèves"
+FROM Eleve
+GROUP BY Ville
+ORDER BY "Nombre d'élèves" DESC;
 
 -- Question 5:
 

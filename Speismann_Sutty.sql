@@ -70,6 +70,13 @@ ORDER BY q.IdQuestion ASC;
 
 -- Question 8:
 
+SELECT e.Nom, e.Prenom, COUNT(part.IdSeance) AS "Nombre de séance", ROUND(AVG(part.NbFautes),2) AS "Moyenne de fautes commises", MIN(part.NbFautes) AS "Minimum de fautes commises", MAX(part.NbFautes) AS "Maximum de fautes commises"
+FROM Eleve AS e
+JOIN Participation AS part
+    ON part.IdEleve = e.IdEleve
+GROUP BY e.IdEleve
+    HAVING "Nombre de séance" >= 2
+ORDER BY e.Nom ASC, e.Prenom ASC;
 
 -- Question 9:
 

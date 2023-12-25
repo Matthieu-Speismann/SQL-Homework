@@ -55,6 +55,18 @@ WHERE "Nombre de question sur les panneaux" >= 3;
 
 -- Question 7:
 
+SELECT DISTINCT q.IdQuestion, q.Theme, q.Niveau 
+FROM Question AS q 
+JOIN Appartenance AS app
+    ON app.IdQuestion = q.IdQuestion
+JOIN Seance AS s
+    ON s.IdSerie = app.IdSerie
+JOIN Participation AS part
+    ON part.IdSeance = s.IdSeance
+JOIN Eleve AS e
+    ON e.IdEleve = e.IdEleve
+WHERE e.Prenom = "Alexandra" AND e.Nom = "Dubois"
+ORDER BY q.IdQuestion ASC;
 
 -- Question 8:
 

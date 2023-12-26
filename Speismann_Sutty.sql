@@ -80,6 +80,17 @@ ORDER BY e.Nom ASC, e.Prenom ASC;
 
 -- Question 9:
 
+SELECT s.IdSeance, s.DateSeance, s.HeureSeance
+FROM Seance AS s
+JOIN Participation AS part1
+    ON part1.IdSeance = s.IdSeance
+JOIN Eleve AS e1
+    ON e1.IdEleve = part1.IdEleve
+JOIN Participation AS part2
+    ON part2.IdSeance = part1.IdSeance
+JOIN Eleve AS e2
+    ON e2.IdEleve = part2.IdEleve
+WHERE (e1.Nom = "Dubois" AND e1.Prenom = "Alexandra" ) AND (e2.Nom = "Dupuis" AND e2.Prenom = "Julie");
 
 -- Question 10:
 

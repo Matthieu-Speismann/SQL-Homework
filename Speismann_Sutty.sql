@@ -109,6 +109,15 @@ WHERE IdSerie NOT IN(
 
 -- Question 11:
 
+SELECT e.IdEleve, e.Nom, e.Prenom
+FROM Eleve AS e
+JOIN Participation AS part
+    ON e.IdEleve = part.IdEleve
+WHERE part.NbFautes = (
+-- Sous requête pour récupérer le nombre maximal de fautes commises.
+SELECT MAX(NbFautes) AS "Maximum de fautes"
+FROM Participation)
+ORDER BY e.IdEleve;
 
 -- Question 12:
 

@@ -161,6 +161,12 @@ HAVING COUNT(DISTINCT Serie.IdCDROM) = (
 
 -- Question 14:
 
+SELECT e.Nom, e.Prenom, ROUND(AVG(part.NbFautes), 2) AS "Nombre de fautes moyen"
+FROM Eleve AS e
+JOIN Participation AS part
+    ON part.IdEleve = e.IdEleve
+GROUP BY e.IdEleve
+ORDER BY "Nombre de fautes moyen" ASC;
 
 -- Question 15:
 

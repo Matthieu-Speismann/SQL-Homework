@@ -44,7 +44,8 @@ ORDER BY "Nombre d'apparition" DESC, IdQuestion ASC;
 -- Question 6:
 
 SELECT IdSerie
-FROM( -- Sous requête attribuant à chaque série le nombre de question sur les panneaux
+FROM( 
+-- Sous requête attribuant à chaque série le nombre de question sur les panneaux
     SELECT app.IdSerie, COUNT(q.IdQuestion) AS "Nombre de question sur les panneaux"
     FROM Appartenance AS app
     JOIN Question AS q
@@ -94,6 +95,17 @@ WHERE (e1.Nom = "Dubois" AND e1.Prenom = "Alexandra" ) AND (e2.Nom = "Dupuis" AN
 
 -- Question 10:
 
+SELECT IdSerie
+FROM Serie
+WHERE IdSerie NOT IN( 
+    -- Sous requête pour avoir les série ayant une question sur le thème les croisements.
+    SELECT DISTINCT IdSerie
+    FROM Appartenance
+    WHERE IdQuestion IN(
+-- Sous requête pour avoir les questions de thème les croisements
+        SELECT IdQuestion
+        FROM Question
+        WHERE Theme = "les croisements"));
 
 -- Question 11:
 

@@ -145,6 +145,19 @@ HAVING COUNT(q.IdQuestion) = (
 
 -- Question 13:
 
+SELECT e.Nom, e.Prenom
+FROM Eleve AS e
+JOIN Participation AS part
+    ON part.IdEleve = e.IdEleve
+JOIN Seance
+    ON Seance.IdSeance = part.IdSeance
+JOIN Serie
+    ON Serie.IdSerie = Seance.IdSerie
+GROUP BY e.IdEleve
+HAVING COUNT(DISTINCT Serie.IdCDROM) = (
+    -- Sous requête pour récupérer le nombre total de CDROMs. 
+    SELECT COUNT(IdCDROM)
+    FROM CDROM);
 
 -- Question 14:
 

@@ -170,5 +170,16 @@ ORDER BY "Nombre de fautes moyen" ASC;
 
 -- Question 15:
 
+SELECT Seance.IdSerie, COUNT(DISTINCT Seance.IdSeance) AS "Nombre de séances", 
+    COUNT(part.IdEleve) AS "Nombre d'élèves ayant fait cette série", ROUND(AVG(part.NbFautes), 2) AS "Nombre moyen de fautes"
+FROM Seance
+JOIN Serie
+    ON Serie.IdSerie = Seance.IdSerie
+JOIN CDROM
+    ON CDROM.IdCDROM = Serie.IdCDROM
+JOIN Participation AS part
+    ON part.IdSeance = Seance.IdSeance
+WHERE CDROM.NomEditeur = "CodePro"
+GROUP BY Seance.IdSerie;
 
 -- Question 16 (Bonus):

@@ -121,6 +121,27 @@ ORDER BY e.IdEleve;
 
 -- Question 12:
 
+-- Remarque: Cette requête fonctionne mais répète la séléction du thème et le GROUP BY. 
+-- Il est peut être possible de l'améliorer. 
+
+SELECt app.IdSerie
+FROM Appartenance AS app
+JOIN Question AS q
+    ON q.IdQuestion = app.IdQuestion
+WHERE q.Theme = "les limitations de vitesse"
+GROUP BY app.IdSerie
+HAVING COUNT(q.IdQuestion) = (
+-- Sous requête pour avoir le maximum du nombre de question sur les limitations de vitesse dans une série. 
+    SELECT MAX("Nombre de questions sur les limitations de vitesse") AS "Max"
+    FROM(
+    -- Sous requête pour avoir le nombre de question sur le thème "les limitations de vitesse" par série.
+        SELECT app.IdSerie, COUNT(q.IdQuestion) 
+                            AS "Nombre de questions sur les limitations de vitesse"
+        FROM Appartenance AS app
+        JOIN Question AS q
+            ON app.IdQuestion = q.IdQuestion
+        WHERE q.Theme = "les limitations de vitesse"
+        GROUP BY app.IdSerie));
 
 -- Question 13:
 
